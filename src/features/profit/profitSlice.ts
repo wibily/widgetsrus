@@ -1,15 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../../app/store";
 import { maxProfit } from "./profitUtil";
+import * as O from "fp-ts/lib/Option";
 
 interface ProfitState {
-  id: string | null;
-  profit: number | null;
+  id: O.Option<string>;
+  profit: O.Option<number>;
 }
 
 const initialState: ProfitState = {
-  id: null,
-  profit: null
+  id: O.none,
+  profit: O.none
 };
 
 export const profitSlice = createSlice({
@@ -26,15 +27,16 @@ export const profitSlice = createSlice({
 // code can then be executed and other actions can be dispatched
 export const fetchProfit = (id: string): AppThunk => dispatch => {
   maxProfit(id)
-    .then((profit: number) =>
+    .then(profit =>
       dispatch(
         setProfit({
-          id,
+          id: O.some(id),
           profit
         })
       )
     )
     .catch(console.error);
 };
+
 export const { setProfit } = profitSlice.actions;
 export default profitSlice.reducer;

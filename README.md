@@ -1,4 +1,6 @@
-This project is supporting material for the "square peg - type hole" talk given on 4 Feb 2021
+This project is supporting material for the "square peg - type hole" talk given on 4 Feb 2021.
+
+The main branch shows the vanilla example. To see the fp-ts version, please checkout the fpts branch.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 
 import * as O from "fp-ts/lib/Option";
-import { constant, constNull, pipe } from "fp-ts/lib/function";
+import { constant, constNull, pipe, identity } from "fp-ts/lib/function";
 
 const Profit = () => {
   const id = useSelector((state: RootState) => state.profit.id);
@@ -11,7 +11,7 @@ const Profit = () => {
 
   return (
     <div>
-      <h2>{pipe(id, O.fold(constNull, constant))}</h2>
+      <h2>{pipe(id, O.fold(constNull, identity))}</h2>
       <h3>
         PROFIT!!:
         {pipe(
